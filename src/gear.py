@@ -28,3 +28,20 @@ class Shotgun(Weapon):
         self.min_damage = 1
         self.max_damage = 8
 
+# Consumable items
+class SmallMedKit():
+    def __init__(self) -> None:
+        self.heal = 25
+
+class MediumMedKit():
+    def __init__(self) -> None:
+        self.heal = 50
+class LargeMedKit():
+    def __init__(self) -> None:
+        self.heal = 75
+
+class Grenade():
+    def __init__(self) -> None:
+        self.damage = 30
+
+consumables = {'SmallMedKit': 25, 'MediumMedKit': 50, 'LargeMedKit': 75, 'Grenade': 30}

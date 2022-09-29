@@ -5,10 +5,18 @@ class Player:
     def __init__(self) -> None:
         self.health = 100
         self.weapon = None
+        self.inventory = []
         
     def attack(self):
         return self.weapon.get_damage()
     
+    def pickup(self,item):
+        self.inventory.append(item)
+        
+    def throw_grenade(self):
+        pass
+    def use_medkit(self):
+        pass
 class Enemy:
     def __init__(self) -> None:
         self.health = None
