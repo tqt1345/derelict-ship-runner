@@ -32,16 +32,24 @@ class Shotgun(Weapon):
 class SmallMedKit():
     def __init__(self) -> None:
         self.heal = 25
+        self.type = "Small Med Kit"
+        self.description = "Heals 25 health"
 
 class MediumMedKit():
     def __init__(self) -> None:
         self.heal = 50
+        self.type = "Medium Med Kit"
+        self.description = "Heals 50 health"
 class LargeMedKit():
     def __init__(self) -> None:
         self.heal = 75
-
+        self.type = "Large Med Kit"
+        self.description = "Heals 75 health"
 class Grenade():
     def __init__(self) -> None:
         self.damage = 30
+        self.type = "Grenade"
+        self.description = "Deals 30 damage"
 
-consumables = {'SmallMedKit': 25, 'MediumMedKit': 50, 'LargeMedKit': 75, 'Grenade': 30}
+
+

@@ -5,13 +5,17 @@ class Player:
     def __init__(self) -> None:
         self.health = 100
         self.weapon = None
-        self.inventory = []
+        self.max_inventory = 3
+        self.inventory = [gear.SmallMedKit(), gear.Grenade()]
         
     def attack(self):
         return self.weapon.get_damage()
     
     def pickup(self,item):
-        self.inventory.append(item)
+        if len(self.inventory) < 3:
+            self.inventory.append(item)
+        else:
+            print("Inventory full!")
         
     def throw_grenade(self):
         pass
@@ -51,3 +55,12 @@ class FleshMound(Enemy):
         self.min_damage = 1
         self.max_damage = 6
         self.type = 'fleshmound'
+
+# Entity related functions
+
+def view_inventory(player):
+    if player.inventory:
+        for item in player.inventory:
+            i = 1
+            print(f"({i}): {item.type}")
+            i+=1

@@ -1,3 +1,3 @@
-import gear
+import main
 
-wep1 = gear.Pistol()
+print(main.continue_prompt())
