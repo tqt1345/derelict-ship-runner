@@ -1,9 +1,14 @@
 # Player and enemy classes
 import random
+import gear
 class Player:
     def __init__(self) -> None:
         self.health = 100
-
+        self.weapon = None
+        
+    def attack(self):
+        return self.weapon.get_damage()
+    
 class Enemy:
     def __init__(self) -> None:
         self.health = None
@@ -14,7 +19,6 @@ class Enemy:
         def attack(self):
             damage = random.randint(self.min_damage,self.max_damage)
             return damage
-
 
 class Crawler(Enemy):
     def __init__(self) -> None:
