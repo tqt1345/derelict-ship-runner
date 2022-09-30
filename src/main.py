@@ -2,6 +2,7 @@
 import system
 import time
 import entities
+import menu
 
 def quit_program():
     '''Clears the console and displays a thank you message
@@ -23,12 +24,6 @@ def opening_prompt():
         return False
 
 
-def continue_prompt():
-    '''Requests player input any key.
-        Used to pause program until user wishes to
-        continue'''
-        
-    input("Press a key to continue: ")
 
 def game_start_msg():
     '''Message displayed on game start'''
@@ -69,28 +64,17 @@ def start_game():
     while True: # Menu 1
         choice = int(input(initial_prompt)) 
         if choice == 1: # Menu 1: Move
-            system.clearConsole()
-            print("Move")
-            continue_prompt()
-            system.clearConsole()
+            menu.menu_move()
             
         elif choice == 2: # Menu 1: Action
             system.clearConsole()
             while True: # Menu 2
                 choice = int(input(action_prompt))
                 if choice == 1: # Menu 2: View inventory
-                    system.clearConsole()
-                    print("You have the following items:")
-                    for item in player.inventory:
-                        print(f"   -{item.type}: {item.description}")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_inv(player)
                     
                 elif choice == 2: # Menu 2: View Health
-                    system.clearConsole()
-                    print(f"You have {player.health} health points!")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_health(player)
                     
                 elif choice == 3: # Menu 2: Use item
                     while True: # Menu 3
