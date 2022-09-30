@@ -40,7 +40,7 @@ def menu_use_item(player):
     for item in player.inventory:
         print(f"   -{index}. {item.type}")
         index += 1
-    print("    -4. Go back")
+    print("   -4. Go back")
 
 '''
 while true

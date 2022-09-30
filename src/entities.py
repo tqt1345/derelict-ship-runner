@@ -38,7 +38,7 @@ class Player:
                       " you are at max health!")
             else:
                 self.health += self.inventory[index].heal
-                self.inventory.remove(index)
+                del self.inventory[index]
                 if self.health < 100:
                     self.health = 100      
         elif self.inventory[index].type == "grenade":

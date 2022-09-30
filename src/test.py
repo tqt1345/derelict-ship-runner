@@ -1,16 +1,16 @@
 import entities
 player1 = entities.Player()
 
-
-
-
-list = [1,2,3]
-
-#print(player1.inventory[0].type)
-
-
-print("What would you like to use?\n")
-index = 1
 for item in player1.inventory:
-    print(f"   -{index}. {item.type}")
-    index += 1
+    print(item.type)
+
+print()
+
+player1.health -= 25
+print(player1.health)
+
+player1.use_item(1)
+print(player1.health)
+
+for item in player1.inventory:
+    print(item.type)
