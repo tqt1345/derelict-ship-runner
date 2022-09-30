@@ -26,3 +26,9 @@ def menu_health(player):
     print(f"You have {player.health} health points!")
     continue_prompt()
     system.clearConsole()
+
+def menu_attack(player):
+    system.clearConsole()
+    print("You attack the enemy")
+    continue_prompt()
+    system.clearConsole()

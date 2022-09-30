@@ -89,10 +89,7 @@ def start_game():
                             break
                         
                 elif choice == 4: # Menu 2: Attack
-                    system.clearConsole()
-                    print("You attack the enemy")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_attack(player)
                 elif choice == 5: # Menu 2: Go back
                     break
                 elif choice == 6: # Menu 2: Quit
