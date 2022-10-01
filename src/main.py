@@ -78,14 +78,15 @@ def start_game():
                     
                 elif choice == 3: # Menu 2: Use item
                     while True: # Menu 3
-                        menu.menu_use_item(player)
-                        choice == int(input("=>: "))
+                        menu.menu_select_item(player)
+                        choice = int(input("=>: "))
                         print(f"Number: {choice}, type {type(choice)}")
                         if choice == 4:
                             print(f"YOU PICKED {choice}")
-                            continue
+                            break
                         else:
-                            player.use_item(choice-1)
+                            menu.menu_use_item(player,choice)
+                            break
 
                 elif choice == 4: # Menu 2: Attack
                     menu.menu_attack(player)

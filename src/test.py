@@ -1,16 +1,11 @@
 import entities
-player1 = entities.Player()
+num  = 1
 
-for item in player1.inventory:
-    print(item.type)
 
-print()
+player = entities.Player()
 
-player1.health -= 25
-print(player1.health)
+player.use_item(3)
 
-player1.use_item(1)
-print(player1.health)
 
-for item in player1.inventory:
-    print(item.type)
+for i in player.inventory:
+    print(i.type)

@@ -32,7 +32,7 @@ def menu_attack(player):
     continue_prompt()
     system.clearConsole()
     
-def menu_use_item(player):
+def menu_select_item(player):
     system.clearConsole()
     print("What would you like to use?\n")
     
@@ -42,6 +42,14 @@ def menu_use_item(player):
         index += 1
     print("   -4. Go back")
 
+def menu_use_item(player, choice):
+    system.clearConsole()
+    choice -= 1
+    player.use_item(choice)
+    continue_prompt()
+    system.clearConsole()
+    
+    pass
 '''
 while true
     print(what items would you like to use)
@@ -69,7 +77,7 @@ else
     if player.health < 100
         player.health = 100
 
-    
+
 grenade:
     if player in combat:
         grenade.use()
