@@ -1,7 +1,9 @@
+# Main program file. 
 
 import system
 import time
 import entities
+import menu
 
 def quit_program():
     '''Clears the console and displays a thank you message
@@ -22,21 +24,12 @@ def opening_prompt():
     else:
         return False
 
-
-def continue_prompt():
-    '''Requests player input any key.
-        Used to pause program until user wishes to
-        continue'''
-        
-    input("Press a key to continue: ")
-
 def game_start_msg():
     '''Message displayed on game start'''
     system.clearConsole()
     print("You wake up from cryostasis."
           "\nYou must reach the end of the ship to survive...")
 
-    
 def start_game():
     '''Runs the game'''
     player = entities.Player() # Player instance
@@ -69,46 +62,30 @@ def start_game():
     while True: # Menu 1
         choice = int(input(initial_prompt)) 
         if choice == 1: # Menu 1: Move
-            system.clearConsole()
-            print("Move")
-            continue_prompt()
-            system.clearConsole()
+            menu.menu_move()
             
         elif choice == 2: # Menu 1: Action
             system.clearConsole()
             while True: # Menu 2
                 choice = int(input(action_prompt))
                 if choice == 1: # Menu 2: View inventory
-                    system.clearConsole()
-                    print("You have the following items:")
-                    for item in player.inventory:
-                        print(f"   -{item.type}: {item.description}")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_inv(player)
                     
                 elif choice == 2: # Menu 2: View Health
-                    system.clearConsole()
-                    print(f"You have {player.health} health points!")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_health(player)
                     
                 elif choice == 3: # Menu 2: Use item
                     while True: # Menu 3
-                        choice = int(input(use_item_prompt))
-                        if choice == 1: # Menu 3: Use item 1
-                            print("Use item 1")
-                        elif choice == 2: # Menu 3: Use item 2
-                            print("Use item 2")
-                        elif choice == 3: # Menu 3: Use item 3
-                            print("Use item 3")
-                        elif choice == 4:# Menu 3: Go back
+                        menu.menu_select_item(player)
+                        choice = int(input("=>: "))
+                        if choice == 4: # Go back if 4
                             break
-                        
+                        else: # Use item if not 4
+                            menu.menu_use_item(player,choice)
+                            break
+
                 elif choice == 4: # Menu 2: Attack
-                    system.clearConsole()
-                    print("You attack the enemy")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_attack(player)
                 elif choice == 5: # Menu 2: Go back
                     break
                 elif choice == 6: # Menu 2: Quit

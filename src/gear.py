@@ -1,6 +1,7 @@
 # classes for items
 
 import random
+import entities
 
 # Weapon classes for player
 class Weapon:
@@ -47,7 +48,8 @@ class SmallMedKit():
     def __init__(self) -> None:
         '''Make small medkit'''
         self.heal = 25
-        self.type = "Small Med Kit"
+        self.type = "medkit"
+        self.name = "Small Med Kit"
         self.description = "Heals 25 health"
 
 class MediumMedKit():
@@ -55,22 +57,24 @@ class MediumMedKit():
     def __init__(self) -> None:
         '''Make medium medkit'''
         self.heal = 50
-        self.type = "Medium Med Kit"
+        self.type = "medkit"
+        self.name = "Medium Med Kit"
         self.description = "Heals 50 health"
 class LargeMedKit():
     '''A large medkit. Heals 75'''
     def __init__(self) -> None:
         '''Made large medkit'''
         self.heal = 75
-        self.type = "Large Med Kit"
+        self.type = 'medkit'
+        self.name = "Large Med Kit"
         self.description = "Heals 75 health"
 class Grenade():
     '''A grenade. Deals 30 damage'''
     def __init__(self) -> None:
         '''Make grenade'''
         self.damage = 30
-        self.type = "Grenade"
+        self.type = "grenade"
+        self.name = "Grenade"
         self.description = "Deals 30 damage"
-
-
+        
 
