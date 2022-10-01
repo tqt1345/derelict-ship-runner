@@ -1,6 +1,7 @@
 # Menu functionality
-# All functions here are to be used in main.py
+
 import system
+
 def continue_prompt():
     '''Requests player input any key.
         Used to pause program until user wishes to
@@ -33,7 +34,7 @@ def menu_health(player):
     system.clearConsole()
 
 def menu_attack(player,enemy):
-    '''WIP
+    '''TODO
         Initiates combat sequence between player and enemy
         Accepts player object and enemy'''
     system.clearConsole()
@@ -63,3 +64,5 @@ def menu_use_item(player, choice):
     player.use_item(choice)
     continue_prompt()
     system.clearConsole()
+
+
