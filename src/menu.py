@@ -1,3 +1,5 @@
+# Menu functionality
+# All functions here are to be used in main.py
 import system
 def continue_prompt():
     '''Requests player input any key.
@@ -7,12 +9,15 @@ def continue_prompt():
     input("Press a key to continue: ")
 
 def menu_move():
+    '''WIP
+        moves the player between rooms'''
     system.clearConsole()
     print("Move")
     continue_prompt()
     system.clearConsole()
     
 def menu_inv(player):
+    '''Displays the player's inventory'''
     system.clearConsole()
     print("You have the following items:")
     for item in player.inventory:
@@ -21,21 +26,27 @@ def menu_inv(player):
     system.clearConsole()
     
 def menu_health(player):
+    '''Displays the player's health'''
     system.clearConsole()
     print(f"You have {player.health} health points!")
     continue_prompt()
     system.clearConsole()
 
-def menu_attack(player):
+def menu_attack(player,enemy):
+    '''WIP
+        Initiates combat sequence between player and enemy
+        Accepts player object and enemy'''
     system.clearConsole()
     print("You attack the enemy")
     continue_prompt()
     system.clearConsole()
     
 def menu_select_item(player):
+    '''Displays selectable items from the player's
+        inventory
+        Accepts player object'''
     system.clearConsole()
     print("What would you like to use?\n")
-    
     index = 1
     for item in player.inventory:
         print(f"   -{index}. {item.type}")
@@ -43,44 +54,12 @@ def menu_select_item(player):
     print("   -4. Go back")
 
 def menu_use_item(player, choice):
+    '''Uses a player's item based on choice argument
+        For use in the menu.
+        Accepts player object and an int'''
+        
     system.clearConsole()
     choice -= 1
     player.use_item(choice)
     continue_prompt()
     system.clearConsole()
-    
-    pass
-'''
-while true
-    print(what items would you like to use)
-    request input
-
-    if input = corresponding num
-        item.use()
-        break
-    
-    if item.use failed
-        return to menu
-        (This will be handled by the item instance
-            methods. if item use fails, program will move 
-            to break and return to the menu anyway)
-
-####
-
-item.use function
-
-medkit:
-if player.health == 100
-    print(You are at max hp)
-else
-    player.health += heal value
-    if player.health < 100
-        player.health = 100
-
-
-grenade:
-    if player in combat:
-        grenade.use()
-    else:
-        print(You are not in combat!)
-'''

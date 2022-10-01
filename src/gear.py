@@ -77,8 +77,4 @@ class Grenade():
         self.name = "Grenade"
         self.description = "Deals 30 damage"
         
-        def use(self):
-            pass
-
-
 

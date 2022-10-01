@@ -1,3 +1,4 @@
+# Main program file. 
 
 import system
 import time
@@ -23,15 +24,12 @@ def opening_prompt():
     else:
         return False
 
-
-
 def game_start_msg():
     '''Message displayed on game start'''
     system.clearConsole()
     print("You wake up from cryostasis."
           "\nYou must reach the end of the ship to survive...")
 
-    
 def start_game():
     '''Runs the game'''
     player = entities.Player() # Player instance
@@ -80,11 +78,9 @@ def start_game():
                     while True: # Menu 3
                         menu.menu_select_item(player)
                         choice = int(input("=>: "))
-                        print(f"Number: {choice}, type {type(choice)}")
-                        if choice == 4:
-                            print(f"YOU PICKED {choice}")
+                        if choice == 4: # Go back if 4
                             break
-                        else:
+                        else: # Use item if not 4
                             menu.menu_use_item(player,choice)
                             break
 

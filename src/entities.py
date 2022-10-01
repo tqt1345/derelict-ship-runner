@@ -24,14 +24,8 @@ class Player:
         else:
             print("Inventory full!")
         
-    def throw_grenade(self):
-        '''Use grenade'''
-        pass
-    def use_medkit(self):
-        '''Use medkit to heal player'''
-        pass
-        
     def use_item(self, index):
+        '''Use a player item'''
         if self.inventory[index].type == "medkit":
             if self.health == 100:
                 print("No need to heal,"
@@ -43,19 +37,10 @@ class Player:
                     self.health = 100      
         elif self.inventory[index].type == "grenade":
             if self.in_combat:
-                pass
+                pass # TODO
             else:
                 print("You aren't in combat.")
 
-'''
-medkit:
-if player.health == 100
-    print(You are at max hp)
-else
-    player.health += heal value
-    if player.health < 100
-        player.health = 100
-'''
 class Enemy:
     '''Enemy class exists to be inherited from'''
     def __init__(self) -> None:
