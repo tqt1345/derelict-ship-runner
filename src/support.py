@@ -80,6 +80,7 @@ def start_game():
                         menu.menu_select_item(player)
                         choice = int(input("=>: "))
                         if choice == 4: # Go back if 4
+                            system.clearConsole()
                             break
                         else: # Use item if not 4
                             menu.menu_use_item(player,choice)
@@ -88,6 +89,7 @@ def start_game():
                 elif choice == 4: # Menu 2: Attack
                     menu.menu_attack(player)
                 elif choice == 5: # Menu 2: Go back
+                    system.clearConsole()
                     break
                 elif choice == 6: # Menu 2: Quit
                     quit_program()
