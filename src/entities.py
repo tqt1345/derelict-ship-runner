@@ -10,6 +10,7 @@ class Player:
         self.weapon = None
         self.max_inventory = 3
         self.inventory = [gear.SmallMedKit(), gear.Grenade()]
+        self.in_combat = False
         
     def attack(self):
         '''Deal damage based on equipped weapon'''
@@ -29,6 +30,32 @@ class Player:
     def use_medkit(self):
         '''Use medkit to heal player'''
         pass
+        
+    def use_item(self, index):
+        if self.inventory[index].type == "medkit":
+            if self.health == 100:
+                print("No need to heal,"
+                      " you are at max health!")
+            else:
+                self.health += self.inventory[index].heal
+                del self.inventory[index]
+                if self.health < 100:
+                    self.health = 100      
+        elif self.inventory[index].type == "grenade":
+            if self.in_combat:
+                pass
+            else:
+                print("You aren't in combat.")
+
+'''
+medkit:
+if player.health == 100
+    print(You are at max hp)
+else
+    player.health += heal value
+    if player.health < 100
+        player.health = 100
+'''
 class Enemy:
     '''Enemy class exists to be inherited from'''
     def __init__(self) -> None:

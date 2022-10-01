@@ -78,21 +78,18 @@ def start_game():
                     
                 elif choice == 3: # Menu 2: Use item
                     while True: # Menu 3
-                        choice = int(input(use_item_prompt))
-                        if choice == 1: # Menu 3: Use item 1
-                            print("Use item 1")
-                        elif choice == 2: # Menu 3: Use item 2
-                            print("Use item 2")
-                        elif choice == 3: # Menu 3: Use item 3
-                            print("Use item 3")
-                        elif choice == 4:# Menu 3: Go back
+                        menu.menu_select_item(player)
+                        choice = int(input("=>: "))
+                        print(f"Number: {choice}, type {type(choice)}")
+                        if choice == 4:
+                            print(f"YOU PICKED {choice}")
                             break
-                        
+                        else:
+                            menu.menu_use_item(player,choice)
+                            break
+
                 elif choice == 4: # Menu 2: Attack
-                    system.clearConsole()
-                    print("You attack the enemy")
-                    continue_prompt()
-                    system.clearConsole()
+                    menu.menu_attack(player)
                 elif choice == 5: # Menu 2: Go back
                     break
                 elif choice == 6: # Menu 2: Quit
