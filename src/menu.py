@@ -1,5 +1,6 @@
 # Menu functionality
 
+import entities as e
 import system
 
 def continue_prompt():
@@ -33,14 +34,14 @@ def menu_health(player):
     continue_prompt()
     system.clearConsole()
 
-def menu_attack(player,enemy):
+def menu_attack(player,monster):
     '''TODO
         Initiates combat sequence between player and enemy
         Accepts player object and enemy'''
-    system.clearConsole()
-    print("You attack the enemy")
-    continue_prompt()
-    system.clearConsole()
+    e.run_combat(player,monster)
+    # Run first sequence
+    # wait for player input
+    # Run second sequence
     
 def menu_select_item(player):
     '''Displays selectable items from the player's

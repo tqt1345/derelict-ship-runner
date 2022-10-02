@@ -34,7 +34,7 @@ def game_start_msg():
 def start_game():
     '''Runs the game'''
     player = entities.Player() # Player instance
-    monster = None # Monster instance
+    monster = entities.Crawler() # Monster instance
     
     # Input prompts
     initial_prompt = ("\nWhat would you like to do?"
@@ -87,7 +87,7 @@ def start_game():
                             break
 
                 elif choice == 4: # Menu 2: Attack
-                    menu.menu_attack(player)
+                    menu.menu_attack(player,monster)
                 elif choice == 5: # Menu 2: Go back
                     system.clearConsole()
                     break
