@@ -2,8 +2,11 @@
 
 import random
 import gear
+
+
 class Player:
     '''The player'''
+
     def __init__(self) -> None:
         '''Make player'''
         self.health = 100
@@ -11,21 +14,21 @@ class Player:
         self.max_inventory = 3
         self.inventory = [gear.SmallMedKit(), gear.Grenade()]
         self.in_combat = False
-        self.isAlive = True 
+        self.isAlive = True
         self.weapon = gear.Pistol()
-        
+
     def attack(self):
         '''Deal damage based on equipped weapon'''
         return self.weapon.get_damage()
-    
-    def pickup(self,item):
+
+    def pickup(self, item):
         '''Pickup an item and place it in
             the player's inventory if not full'''
         if len(self.inventory) < 3:
             self.inventory.append(item)
         else:
             print("Inventory full!")
-        
+
     def use_item(self, index):
         '''Use a player item'''
         if self.inventory[index].type == "medkit":
@@ -36,28 +39,32 @@ class Player:
                 self.health += self.inventory[index].heal
                 del self.inventory[index]
                 if self.health < 100:
-                    self.health = 100      
+                    self.health = 100
         elif self.inventory[index].type == "grenade":
             if self.in_combat:
-                pass # TODO
+                pass  # TODO
             else:
                 print("You aren't in combat.")
 
+
 class Enemy:
     '''Enemy class exists to be inherited from'''
+
     def __init__(self) -> None:
         self.health = None
         self.min_damage = None
         self.max_damage = None
         self.type = None
-        
+
     def attack(self):
         '''Returns enemy damage'''
-        damage = random.randint(self.min_damage,self.max_damage)
+        damage = random.randint(self.min_damage, self.max_damage)
         return damage
+
 
 class Crawler(Enemy):
     '''Crawler enemy'''
+
     def __init__(self) -> None:
         '''Creates crawler'''
         super().__init__()
@@ -67,8 +74,10 @@ class Crawler(Enemy):
         self.type = 'crawler'
         self.isAlive = True
 
+
 class Impaler(Enemy):
     '''Impaler enemy'''
+
     def __init__(self) -> None:
         '''Creates Impaler'''
         super().__init__()
@@ -77,9 +86,11 @@ class Impaler(Enemy):
         self.max_damage = 12
         self.type = 'impaler'
         self.isAlive = True
-        
+
+
 class FleshMound(Enemy):
     '''Flesh Mound enemy'''
+
     def __init__(self) -> None:
         '''Creates Flesh Mound'''
         super().__init__()
@@ -89,6 +100,7 @@ class FleshMound(Enemy):
         self.type = 'fleshmound'
         self.isAlive = True
 
+
 # Entity related functions
 
 def view_inventory(player):
@@ -96,9 +108,10 @@ def view_inventory(player):
         for item in player.inventory:
             i = 1
             print(f"({i}): {item.type}")
-            i+=1
+            i += 1
 
-def combatSequence(player,monster,mode):
+
+def combatSequence(player, monster, mode):
     if mode == 'player':
         dmg = player.attack()
         monster.health -= dmg
@@ -107,44 +120,44 @@ def combatSequence(player,monster,mode):
         dmg = monster.attack()
         player.health -= dmg
         print(f"The {monster.type} has dealt {dmg} to you!")
-    
-def run_combat(player,monster):
+
+
+def run_combat(player, monster):
     if not monster.isAlive:
         print(f"The {monster.type} is already dead")
         return
-    
+
     inCombat = True
     while inCombat:
-        inCombat = healthCheck(player,monster)
-        combatSequence(player,monster,'player')
-        inCombat = healthCheck(player,monster)
-        combatSequence(player,monster,'monster')
-        inCombat = healthCheck(player,monster)
-    
+        inCombat = healthCheck(player, monster)
+        combatSequence(player, monster, 'player')
+        inCombat = healthCheck(player, monster)
+        combatSequence(player, monster, 'monster')
+        inCombat = healthCheck(player, monster)
+
     if not player.isAlive:
         print(f"You have died")
     elif not monster.isAlive:
         print(f"You have won")
 
-def end_combat(player,monster):
+
+def end_combat(player, monster):
     pass
 
-def healthCheck(player,monster):
+
+def healthCheck(player, monster):
     status = True
-    
+
     if monster.health <= 0:
         monster.isAlive = False
         status = False
-    elif player.health <=0:
+    elif player.health <= 0:
         player.isAlive = False
         status = False
-        
+
     return status
 
-        
-        
-        
-        
+
 '''
 Combat sequence
     -loop over combat until either player or monster is dead
