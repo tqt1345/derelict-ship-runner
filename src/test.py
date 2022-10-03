@@ -1,6 +1,6 @@
 import entities as e
 import menu as m
-from src.entities import combatSequence 
+
 
 player = e.Player()
 monster = e.Crawler()
@@ -17,7 +17,7 @@ def test(player,monster):
             print(f"The {monster.type} is already dead")
             return
         
-        inCombat = healthCheck(player,monster)
+        inCombat = e.healthCheck(player,monster)
         e.combatSequence(player,monster,'player')
         m.continue_prompt()
         
