@@ -1,27 +1,20 @@
 import entities as e
 import menu as m
-
+import system as s
 
 player = e.Player()
 monster = e.Crawler()
 
-e.run_combat(player,monster)
+#e.run_combat(player,monster)
 
 
 def test(player,monster):
-    
-    inCombat = True
+    s.clearConsole()
+    e.combatSequence(player,monster,'player')
+    m.continue_prompt()
 
-    while inCombat:
-        if not monster.isAlive:
-            print(f"The {monster.type} is already dead")
-            return
-        
-        inCombat = e.healthCheck(player,monster)
-        e.combatSequence(player,monster,'player')
-        m.continue_prompt()
-        
-        
-        e.combatSequence(player,monster,'monster')
-        m.continue_prompt()
-        
+    s.clearConsole()
+    e.combatSequence(player,monster,'monster')
+    m.continue_prompt()
+    
+test(player,monster)

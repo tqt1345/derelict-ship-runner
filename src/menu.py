@@ -1,5 +1,6 @@
 # Menu functionality
 
+from binascii import Incomplete
 import entities as e
 import system
 
@@ -38,15 +39,48 @@ def menu_health(player):
     continue_prompt()
     system.clearConsole()
 
+def menu_victory_defeat(monster, mode):
+    if mode == 'player':
+        system.clearConsole()
+        print(f"You have defeated the {monster.type}!")
+        continue_prompt()
+        system.clearConsole()
+    elif mode == 'monster':
+        system.clearConsole()
+        print(f"The {monster.type} has defeated you!")
+        continue_prompt
+        system.clearConsole()
 
 def menu_attack(player, monster):
     """TODO
         Initiates combat sequence between player and enemy
         Accepts player object and enemy"""
-    e.run_combat(player, monster)
-    # Run first sequence
+    system.clearConsole()
+    if not monster.isAlive:
+        print(f"The {monster.type} is already dead")
+        return
+    
+    in_combat = True
+    while in_combat:
+        system.clearConsole()
+        e.show_combat_health(player,monster)
+        in_combat = e.healthCheck(player,monster)
+        e.entityCombat(player,monster,'player')
+        continue_prompt()
+        
+        system.clearConsole()
+        e.show_combat_health(player,monster)
+        in_combat = e.healthCheck(player,monster)
+        e.entityCombat(player,monster,'monster')
+        continue_prompt()    
+
+    if not player.isAlive:
+        menu_victory_defeat(monster,'monster')
+    elif not monster.isAlive:
+        menu_victory_defeat(monster,'player')
+    # Run first sequence # combatsequence
     # wait for player input
-    # Run second sequence
+    # Run second sequence # combatsequence
 
 
 def menu_select_item(player):
@@ -72,3 +106,9 @@ def menu_use_item(player, choice):
     player.use_item(choice)
     continue_prompt()
     system.clearConsole()
+
+
+'''
+while True
+    
+'''

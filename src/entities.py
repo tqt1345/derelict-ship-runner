@@ -111,7 +111,7 @@ def view_inventory(player):
             i += 1
 
 
-def combatSequence(player, monster, mode):
+def entityCombat(player, monster, mode):
     if mode == 'player':
         dmg = player.attack()
         monster.health -= dmg
@@ -122,6 +122,7 @@ def combatSequence(player, monster, mode):
         print(f"The {monster.type} has dealt {dmg} to you!")
 
 
+
 def run_combat(player, monster):
     if not monster.isAlive:
         print(f"The {monster.type} is already dead")
@@ -130,9 +131,9 @@ def run_combat(player, monster):
     inCombat = True
     while inCombat:
         inCombat = healthCheck(player, monster)
-        combatSequence(player, monster, 'player')
+        entityCombat(player, monster, 'player')
         inCombat = healthCheck(player, monster)
-        combatSequence(player, monster, 'monster')
+        entityCombat(player, monster, 'monster')
         inCombat = healthCheck(player, monster)
 
     if not player.isAlive:
@@ -157,7 +158,9 @@ def healthCheck(player, monster):
 
     return status
 
-
+def show_combat_health(player,monster):
+    print(f"Your health: {player.health}")
+    print(f"Enemy health: {monster.health}\n")
 '''
 Combat sequence
     -loop over combat until either player or monster is dead
