@@ -111,7 +111,7 @@ def view_inventory(player):
             i += 1
 
 
-def entityCombat(player, monster, mode):
+def entity_combat(player, monster, mode):
     if mode == 'player':
         dmg = player.attack()
         monster.health -= dmg
@@ -120,27 +120,6 @@ def entityCombat(player, monster, mode):
         dmg = monster.attack()
         player.health -= dmg
         print(f"The {monster.type} has dealt {dmg} to you!")
-
-
-
-def run_combat(player, monster):
-    if not monster.isAlive:
-        print(f"The {monster.type} is already dead")
-        return
-
-    inCombat = True
-    while inCombat:
-        inCombat = healthCheck(player, monster)
-        entityCombat(player, monster, 'player')
-        inCombat = healthCheck(player, monster)
-        entityCombat(player, monster, 'monster')
-        inCombat = healthCheck(player, monster)
-
-    if not player.isAlive:
-        print(f"You have died")
-    elif not monster.isAlive:
-        print(f"You have won")
-
 
 def end_combat(player, monster):
     pass
@@ -161,42 +140,4 @@ def healthCheck(player, monster):
 def show_combat_health(player,monster):
     print(f"Your health: {player.health}")
     print(f"Enemy health: {monster.health}\n")
-'''
-Combat sequence
-    -loop over combat until either player or monster is dead
-    -if none are at 0 health below, combat is initiated
-    -Player and monster take turns dealing damage
-    -after each turn, a check is done to see health
-    -if the check returns 0 health, combat is ended
-    -depending on who wins, final message is displayed.
-    
-    -needs to check who won # happens after while loop. exectues after loop is broken
-    -after loop, do if else that checks health of entities
-    -if monster at 0 health, print player wins, vice versa
-    -if both at 0, print both dead, end game
-    
-while active = True
-    active = check health() # if player or monster 0 health, break loop
-    player attacks monster
-    active = check health()
-    monster attacks player
-    
-    
-def check_health()
-    dead = False
-    if health = 0
-        dead = True
-    return dead
 
-def endCombatMsg():
-    print end combat msg
-
-        
-while True
-    if check_health:
-        break
-    else
-        player attacks monster
-        
-
-'''

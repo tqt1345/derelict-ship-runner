@@ -5,8 +5,7 @@ import system
 
 
 def continue_prompt():
-    """
-    Pauses program until user inputs something
+    """Pauses program until user inputs something
     """
 
     input("Press a key to continue: ")
@@ -25,7 +24,7 @@ def menu_inv(player):
     """Displays the player's inventory
 
     Args:
-        player (_type_): player instance
+        player (objec): player instance
     """
     system.clearConsole()
     print("You have the following items:")
@@ -39,7 +38,7 @@ def menu_health(player):
     """Displays the player's health
 
     Args:
-        player (_type_): player instance
+        player (object): player instance
     """
     system.clearConsole()
     print(f"You have {player.health} health points!")
@@ -69,8 +68,8 @@ def menu_attack(player, monster):
     """Initiates combat between player and monster
 
     Args:
-        player (_type_): player instance
-        monster (_type_): monster instance
+        player (object): player instance
+        monster (object): monster instance
     """
     system.clearConsole()
     if not monster.isAlive:
